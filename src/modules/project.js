@@ -7,7 +7,7 @@ export const Project = function(data){
         todo: [],
 
         addTodo: function(todo){
-            this.todo.push(todo);
+            this.todo.unshift(todo);
         },
 
         removeTodo: function(todo){

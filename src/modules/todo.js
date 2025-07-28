@@ -5,7 +5,7 @@ export const Todo = function(todoData = {}){
     const description = todoData.description ? todoData.description : "default description";
     const dueDate = todoData.dueDate ? todoData.dueDate : "defult due data";
     const priority = todoData.priority ? todoData.priority : "low";
-    const completed = todoData.completed ? todoData.completed : "incompolete";
+    const completed = todoData.completed ? todoData.completed : false;
     
     const todo = {id,title,description,dueDate,priority,completed};
 

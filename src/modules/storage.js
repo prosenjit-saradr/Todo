@@ -32,8 +32,11 @@ export const Storage = function(){
     storageInstance = {
 
         saveProjects: function(projects=[]){
+            // console.log(projects);
             const data = serialize(projects);
             localStorage.projects = data;
+            // console.log("Data");
+            // console.log(data);
             cachedProjects.setProjects(projects);
         },
 
@@ -91,7 +94,50 @@ export const Storage = function(){
             if(project==null) return;
             
             project.addTodo(todo);
+            // console.log("projects");
+            // console.log(projects);
             this.saveProjects(projects);
+            // console.log(Storage().getProjects());
+        },
+
+        getTodo: function(projectId, todoId){
+            console.log("getting data "+projectId+","+todoId);
+            const projects = Storage().getProjects();
+            let project = null;
+            for(const prj of projects){
+                if(prj.id === projectId){
+                    project = prj;
+                    break;
+                }
+            }
+            if(project===null) return;
+            for(const td of project.todo){
+                if(td.id === todoId){
+                    return td;
+                }
+            }
+            console.log("couldn't find todo");
+        },
+        
+        setTodo: function(projectId, todoId, newTodo){
+            const projects = Storage().getProjects();
+            let project = null;
+            for(const prj of projects){
+                if(prj.id === projectId){
+                    project = prj;
+                    break;
+                }
+            }
+            if(project===null) return;
+            for(const td of project.todo){
+                if(td.id === todoId){
+                    Object.assign(td,newTodo);
+                    Storage().saveProjects(projects);
+                    return;
+                }
+            }
+            console.log("couldn't update todo: not found");
+
         },
         
         addProject: function(project){
@@ -124,13 +170,12 @@ const serialize = function(data){
 const reconstructProjects = function(data){
     let projects = [];
 
-    console.log(data);
     for(let projectData of data){
         let project = Project({id: projectData.id, name: projectData.name});
 
         for(let todoData of projectData.todo){
             const todo = Todo(todoData);
-            project.addTodo(todo);
+            project.todo.push(todo);
         }
 
         projects.push(project);

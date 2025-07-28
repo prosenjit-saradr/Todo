@@ -1,5 +1,9 @@
 *{
-    border: 1px solid red;
+    /* border: 1px solid red; */
+}
+
+*{
+    box-sizing: border-box;
 }
 
 ul {
@@ -20,4 +24,13 @@ ul {
 
 .todo-list {
     flex: 4;
+}
+
+.required {
+    color: red;
+}
+
+#todo-dialog fieldset {
+    display: flex;
+    flex-direction: column;
 }
