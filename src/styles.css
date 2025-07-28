@@ -1,0 +1,23 @@
+*{
+    border: 1px solid red;
+}
+
+ul {
+    list-style: none;
+}
+.active {
+    background: lightgreen;
+}
+
+#container {
+    display: flex;
+    flex-direction: row;
+}
+
+.project-list {
+    flex: 1;
+}
+
+.todo-list {
+    flex: 4;
+}
