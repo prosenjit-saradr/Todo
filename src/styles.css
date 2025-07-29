@@ -1,3 +1,270 @@
+*,
+::before,
+::after {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    color: #666666;
+}
+
+button {
+    all: unset;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+html {
+    height: 100vh;
+    padding: 20px;
+    background: rgb(182, 180, 180);
+}
+
+body {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    /* background: white; */
+}
+
+body > * {
+    background: white;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+#side-bar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+#main-content {
+    display: flex;
+    flex-direction: column;
+    flex: 4;
+}
+
+img {
+    max-width: auto;
+    height: 100%;
+    display: block;
+}
+
+#logo {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    height: 10%;
+    
+    /* align-items: center;
+    justify-content: center; */
+}
+
+#logo p {
+    font-size: clamp(1rem,3vw,2.5rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-project {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 10px;
+    
+}
+
+.add-project button {
+    background-image: url("img/add-button.png");
+    background-size: cover;
+    height: 100%;
+    aspect-ratio: 1;
+}
+
+.add-project p {
+    font-size: 24px;
+}
+
+#project-container {
+    flex: 1;
+    /* background-color: blue; */
+}
+
+#project-container li {
+    font-size: 18px;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.project-element {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    
+}
+
+.project-element:hover {
+    cursor: default;
+    color: #333333;
+}
+
+.btn-delete-project, .btn-delete-todo {
+    background-image: url("img/trash-can.png");
+    background-size: cover;
+    width: 20px;
+    height: 100%;
+    aspect-ratio: 1;
+}
+
+.btn-edit-todo {
+    background-image: url("img/edit-button.png");
+    background-size: cover;
+    width: 20px;
+    height: 100%;
+    aspect-ratio: 1;
+}
+
+.todo-item {
+    border: 1px solid skyblue;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+
+    box-shadow: 2px 2px 8px grey;
+}
+
+.todo-item:hover {
+    background-color: rgb(197, 231, 245);
+}
+
+.todo-item > * {
+    margin: 5px;
+    margin-bottom: 8px;
+}
+
+.todo-item .due-date {
+    /* border-bottom: 1px solid black; */
+    color: rgb(80, 144, 233);
+}
+
+.todo-item .priority {
+    /* border-bottom: 1px solid black; */
+    color: red;
+}
+
+#menu-bar {
+    display: flex;
+    flex-direction: row;
+    height: 6%;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.seperator-line {
+    margin: 10px 0;
+    height: 1px;
+    background-color: grey;
+}
+
+#add-todo {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+#add-todo p {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+}
+
+#add-todo button {
+    background-image: url("img/add-button.png");
+    background-size: cover;
+    height: 100%;
+    aspect-ratio: 1;
+}
+
+#todo-search {
+    display: flex;
+    flex-direction: row;
+    flex: 2;
+}
+
+#todo-search input[type="text"] {
+    height: 100%;
+    width: 100%;
+    margin-right: 5px;
+    border: 1px solid lightblue;
+    border-radius: 10px;
+}
+
+#todo-search input[type="text"]:hover {
+    border-color: rgb(92, 92, 243);
+}
+
+#todo-search input[type="text"]:focus {
+    border-color: rgb(99, 99, 243);
+}
+
+#todo-search-button {
+    background-image: url("img/magnifier.png");
+    background-size: cover;
+    height: 100%;
+    aspect-ratio: 1;
+}
+
+#utility {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    justify-content: end;
+    gap: 10px;
+}
+
+#profile {
+    background-image: url("img/user.png");
+    background-size: cover;
+    height: 100%;
+    aspect-ratio: 1;;
+}
+
+#settings {
+    background-image: url("img/cogwheel.png");
+    background-size: cover;
+    height: 100%;
+    aspect-ratio: 1;;
+}
+
+#content {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+#todo-container {
+    flex: 2;
+}
+
+#todo-details {
+    flex: 1;
+}
+
+#todo-content ul{
+    
+}
+
 *{
     /* border: 1px solid red; */
 }
@@ -10,7 +277,8 @@ ul {
     list-style: none;
 }
 .active {
-    background: lightgreen;
+    background: skyblue;
+    box-shadow: 2px 2px 4px grey;
 }
 
 #container {

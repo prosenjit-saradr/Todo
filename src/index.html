@@ -8,10 +8,46 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <button id="btn-add-todo">Add Todo</button>
+    <!-- <button id="btn-add-todo">Add Todo</button>
     <button id="btn-add-project">Add Project</button>
     <div id="container">
 
+    </div>
+     -->
+    <div id="side-bar">
+        <div id="logo">
+            <img src="img/dashboard.png" alt="logo">
+            <p>Dashboard</p>
+        </div>        
+        <div class="add-project">
+            <p>Projects</p>
+            <button id="btn-add-project"></button>
+        </div>
+        <div class="seperator-line"></div>
+        <div id="project-container"></div>
+    </div>
+    <div id="main-content">
+        <div id="menu-bar">
+            <div id="add-todo">
+                <p>Todos</p>
+                <button id="btn-add-todo"></button>
+            </div>
+            <div id="todo-search">
+                <input type="text" id="todo-serach-input">
+                <button id="todo-search-button"></button>
+            </div>
+            <div id="utility">
+                <button id="settings"></button>
+                <button id="profile"></button>
+            </div>
+        </div>
+        <div class="seperator-line"></div>
+        <div id="content">
+            <div id="todo-container">
+                
+            </div>
+            <div id="todo-details"></div>
+        </div>
     </div>
 </body>
 </html>

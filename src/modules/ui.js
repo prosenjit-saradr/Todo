@@ -21,15 +21,15 @@ export const TodoListUI = function(todos){
 export const TodoUI = function(todo){
     const html = `
         <div class="todo-item">
-            <h3 class="todo-title">${todo.title} (${todo.completed ? "complete" : "incomplete"})</h3>
+            <h3 class="todo-title">${todo.title} ${todo.completed ? "\u{2714}" : "\u{274C}"}</h3>
             <p class="todo-description">${todo.description}</p>
             <div style="display: flex; flex-direction:row; gap: 10px;">
                 <p class="due-date">Due on: ${todo.dueDate}</p>
                 <p class="priority">Priority: ${todo.priority}</p>
             </div>
-            <div>
-            <button class="btn-edit-todo">edit</button>
-            <button class="btn-delete-todo">delete</button>
+            <div style="display: flex; flex-directon: row; gap: 20px;">
+                <button class="btn-edit-todo"></button>
+                <button class="btn-delete-todo"></button>
             </div>
         </div>
     `
@@ -57,7 +57,7 @@ export const ProjectUI = function(project){
     const html = `
         <div class="project-element">
             <span class="project-title">${project.name}</span>
-            <button class="btn-delete-project">delete</button>
+            <button class="btn-delete-project"></button>
         </div> 
     `
     

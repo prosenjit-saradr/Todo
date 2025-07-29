@@ -15,9 +15,9 @@ const container = document.getElementById("container");
 
 export const initUI = function(){
     const projects = Storage().getProjects();
-    const container = document.getElementById("container");
+    const projectContainer = document.getElementById("project-container");
     const projectList = ProjectListUI(projects);
-    container.appendChild(projectList);
+    projectContainer.appendChild(projectList);
 
     let todoList = null;
     if(Storage().isEmpty()){
@@ -27,7 +27,8 @@ export const initUI = function(){
         todoList = TodoListUI(projects[0].todo);
         setActiveProjectId(projects[0].id);
     }
-    container.appendChild(todoList);
+    const todoContainer = document.getElementById("todo-container");
+    todoContainer.appendChild(todoList);
 
     attachListeners();
 }
