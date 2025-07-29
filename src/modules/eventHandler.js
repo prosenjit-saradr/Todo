@@ -1,7 +1,7 @@
 import { Todo } from "./todo.js";
 import { Project } from "./project.js";
 import { Storage } from "./storage.js";
-import { ProjectListUI, TodoListUI, TodoUI, ProjectUI, TodoCreateDialog, TodoEditDialog } from "./ui.js";
+import { ProjectListUI, TodoListUI, TodoUI, ProjectUI, TodoCreateDialog, TodoEditDialog, CreateProjectDialog } from "./ui.js";
 import { addElement, removeElement, addListenerByID, addListenerByQeurySellector,
          getActiveProjectId, setActiveProjectId, getActiveProject,
          getProjectListUI,getTodoListUI,
@@ -180,10 +180,9 @@ export const ProjectClickHandler = function(evt){
     todoListUI.appendChild(TodoListUI(getActiveProject().todo))
 }
 
-export const AddProjectHandler = function(evt){
-    evt.stopPropagation();
+const createProject = function(projectName){
     console.log("add project");
-    const newPorject = Project({name: "new project"});
+    const newPorject = Project({name: projectName});
     Storage().addProject(newPorject);
     const projectUI = ProjectUI(newPorject);
     addElement(getProjectListUI(),projectUI);
@@ -195,6 +194,33 @@ export const AddProjectHandler = function(evt){
         todoListUI.innerHTML = "";
         todoListUI.appendChild(TodoListUI(getActiveProject().todo))
     });
+}
+
+export const AddProjectHandler = function(evt){
+    evt.stopPropagation();
+
+    const createProjectDialog = CreateProjectDialog();
+    
+    document.body.appendChild(createProjectDialog);
+    createProjectDialog.showModal();
+    
+    const createProjectButton = document.getElementById("btn-create-project");
+    const discardProjectButton = document.getElementById("btn-discard-project");
+    
+    discardProjectButton.addEventListener("click",(e)=>{
+        createProjectDialog.close();
+        createProjectDialog.remove();
+    });
+    
+    createProjectButton.addEventListener("click",(e)=>{
+        const projectName = document.getElementById("project-name").value;
+        console.log("project name: "+projectName);
+        createProject(projectName);
+        createProjectDialog.close();
+        createProjectDialog.remove();
+    });
+
+
 }
 
 export const DeleteProjectHandler = function(evt){

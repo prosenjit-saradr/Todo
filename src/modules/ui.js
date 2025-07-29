@@ -122,14 +122,14 @@ export const TodoCreateDialog = function(){
 }
 
 export const TodoEditDialog = function(todoData){
-    console.log(todoData.description);
+    console.log(todoData.title);
     const html = `
         <div>
             <fieldset>
             <legend>Todo details</legend>
 
                 <Label for="title">Title<span class="required">*</span></Label>
-                <input id="titile" type="text" required placeholder="todo title" value=${todoData.title}>
+                <input id="titile" type="text" required placeholder="todo title" value="${todoData.title}">
 
                 <Label for="desription">Description</Label>
                 <textarea id="description" rows=3 cols=30 placeholder="description">${todoData.description}</textarea>
@@ -165,4 +165,23 @@ export const TodoEditDialog = function(todoData){
     todoCreateDialog.id = "todo-dialog";
     
     return todoCreateDialog;
+}
+
+export const CreateProjectDialog = function(){
+    const html = `
+        <div style="display: flex; flex-direction: column;">
+            <label for="project-name">Project name<span class="required">*</span></label>
+            <input type="text" id="project-name" placeholder="default project">
+            <div>
+                <button id="btn-create-project">Create</button>
+                <button id="btn-discard-project">Discard</button>
+            </div>
+        </div> 
+    `;
+
+    const dialog = document.createElement("dialog");
+    dialog.id = "create-project-dialog";
+    dialog.innerHTML = html;
+    
+    return dialog;
 }
