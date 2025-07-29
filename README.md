@@ -1,2 +1,5 @@
-# Todo
-A basic todo app to lean javascript
+## A basic TODO App  
+built with  
+1. HTML
+2. CSS
+3. Javascript
