@@ -122,7 +122,6 @@ export const TodoCreateDialog = function(){
 }
 
 export const TodoEditDialog = function(todoData){
-    console.log(todoData.title);
     const html = `
         <div>
             <fieldset>
@@ -139,17 +138,17 @@ export const TodoEditDialog = function(todoData){
                 
                 <label for="priority">Priority<span class="required">*<span></label>
                 <div id="priority">
-                <input id="low" type="radio" name="priority" value="low">
+                <input id="low" type="radio" name="priority" value="low" ${todoData.priority==="low" ? "checked" : ""}>
                 <label for="low">Low</label>
-                <input id="medium" type="radio" name="priority" value="medium">
+                <input id="medium" type="radio" name="priority" value="medium" ${todoData.priority==="medium" ? "checked" : ""}>
                 <label for="medium">Medium</label>
-                <input id="high" type="radio" name="priority" value="high">
+                <input id="high" type="radio" name="priority" value="high" ${todoData.priority==="high" ? "checked" : ""}>
                 <label for="high">High</label>
                 </div>
                 
                 <div>
                 <label for="completed">Completed</label>
-                <input type="checkbox" id="todo-completed">
+                <input type="checkbox" id="todo-completed" ${todoData.completed ? "checked" : ""}>
                 </div>
 
             </fieldset>
