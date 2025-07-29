@@ -36,11 +36,9 @@ const attachListeners = function(){
     const projectListUI = getProjectListUI();
     projectListUI.addEventListener("click",(evt)=>{
         if(evt.target.className === "btn-delete-project"){
-            console.log(evt.target);
             DeleteProjectHandler(evt);
         }
         else if(evt.target.className === "project-title"){
-            console.log(evt.target);
             ProjectClickHandler(evt);
         }
 
@@ -49,17 +47,14 @@ const attachListeners = function(){
     const todoListUI = getTodoListUI();
     todoListUI.addEventListener("click",(evt)=>{
         if(evt.target.className === "btn-delete-todo"){
-            console.log(evt.target);
             evt.stopPropagation();
             DeleteTodoHandler(evt);
         }else if(evt.target.className==="btn-edit-todo"){
-            console.log("update todo");
             evt.stopPropagation();
             UpdateTodoHandler(evt);
         }
         else{
-            console.log("todo item clicked");
-            console.log(evt.target);
+            todoClickHandler();
         }
     });
 
@@ -74,10 +69,13 @@ const attachListeners = function(){
     });
 }
 
+const todoClickHandler = function(){
+    
+}
+
 export const DeleteTodoHandler = function(evt){
     evt.stopPropagation();
     const todoElement = evt.target.closest("li");
-    console.log("delete todo: "+todoElement.id);
     const projects = Storage().getProjects();
     Storage().deleteTodo(getActiveProjectId(),todoElement.id);
     todoElement.remove();
@@ -103,9 +101,7 @@ const getTodoData = function(){
 }
 
 const makeTodo = function(todoData){
-    console.log("add todo");
     const newTodo = Todo(todoData);
-    // const projects = Storage().getProjects();
     Storage().addTodo(getActiveProjectId(),newTodo);
     const todoUI = TodoUI(newTodo);
     getTodoListUI().prepend(todoUI);
@@ -138,8 +134,6 @@ export const AddTodoHandler = function(evt){
         todoDialog.close();
         todoDialog.remove();
     });
-    
-    return;
 }
 
 export const UpdateTodoHandler = function(evt){
@@ -158,9 +152,7 @@ export const UpdateTodoHandler = function(evt){
     });
 
     updateTodoButton.addEventListener("click",(e)=>{
-        console.log("save update");
         const todoData = getTodoData();
-        console.log(todoData);
         Storage().setTodo(getActiveProjectId(),todoId,todoData);
         updateTodoUI(todoId,todoData);
         editTodoDialog.close();
@@ -170,9 +162,7 @@ export const UpdateTodoHandler = function(evt){
 
 export const ProjectClickHandler = function(evt){
     evt.stopPropagation();
-    console.log("clicked");
     const projectElement = evt.target.closest("li");
-    console.log("set project id : "+projectElement.id);
     setActiveProjectId(projectElement.id);
 
     const todoListUI = getTodoListUI();
@@ -181,14 +171,13 @@ export const ProjectClickHandler = function(evt){
 }
 
 const createProject = function(projectName){
-    console.log("add project");
     const newPorject = Project({name: projectName});
     Storage().addProject(newPorject);
     const projectUI = ProjectUI(newPorject);
     addElement(getProjectListUI(),projectUI);
+
     addListenerByQeurySellector(projectUI,".btn-delete-project","click",DeleteProjectHandler);
     addListenerByID(document,newPorject.id,"click",()=>{
-        console.log("clicked delte prject button");
         setActiveProjectId(newPorject.id);
         const todoListUI = getTodoListUI();
         todoListUI.innerHTML = "";
@@ -214,7 +203,6 @@ export const AddProjectHandler = function(evt){
     
     createProjectButton.addEventListener("click",(e)=>{
         const projectName = document.getElementById("project-name").value;
-        console.log("project name: "+projectName);
         createProject(projectName);
         createProjectDialog.close();
         createProjectDialog.remove();
@@ -224,14 +212,11 @@ export const AddProjectHandler = function(evt){
 }
 
 export const DeleteProjectHandler = function(evt){
-    console.log(evt.target);
     evt.stopPropagation();
     const projectElement = evt.target.closest("li");
-    console.log("delete project: "+projectElement.id);
     Storage().deleteProject(projectElement.id);
     projectElement.remove();
     
-    // console.log("currnt project Id : "+)
     if(projectElement.id === getActiveProjectId()){
         if(!Storage().isEmpty()){
             setActiveProjectId(Storage().getProjects()[0].id);

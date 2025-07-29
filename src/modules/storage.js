@@ -32,11 +32,8 @@ export const Storage = function(){
     storageInstance = {
 
         saveProjects: function(projects=[]){
-            // console.log(projects);
             const data = serialize(projects);
             localStorage.projects = data;
-            // console.log("Data");
-            // console.log(data);
             cachedProjects.setProjects(projects);
         },
 
@@ -57,8 +54,6 @@ export const Storage = function(){
                 cachedProjects.setProjects(defaultProject);
                 return defaultProjectList;
             }
-
-            // if(!cachedProjects.modified) return cachedProjects.projects;
 
             const projects = reconstructProjects(data);
             return projects;
@@ -94,10 +89,7 @@ export const Storage = function(){
             if(project==null) return;
             
             project.addTodo(todo);
-            // console.log("projects");
-            // console.log(projects);
             this.saveProjects(projects);
-            // console.log(Storage().getProjects());
         },
 
         getTodo: function(projectId, todoId){
@@ -116,7 +108,6 @@ export const Storage = function(){
                     return td;
                 }
             }
-            console.log("couldn't find todo");
         },
         
         setTodo: function(projectId, todoId, newTodo){

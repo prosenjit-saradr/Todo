@@ -93,21 +93,6 @@ export const getActiveProject = function(){
     console.log("couldn't fine active project");
 }
 
-// const html = `
-//        <div class="todo-item">
-//             <h3 class="todo-title">${todo.title} (${todo.completed ? "complete" : "incomplete"})</h3>
-//             <p class=todo-description">${todo.description}</p>
-//             <div style="display: flex; flex-direction:row; gap: 10px;">
-//                 <p class="due-date">Due on: ${todo.dueDate}</p>
-//                 <p class="priority">Priority: ${todo.priority}</p>
-//             </div>
-//             <div>
-//             <button class="btn-edit-todo">edit</button>
-//             <button class="btn-delete-todo">delete</button>
-//             </div>
-//         </div>
-//         `
-
 export const updateTodoUI = function(todoId, todoData){
     const todoEl = document.getElementById(todoId);
     if(!todoEl) return;
