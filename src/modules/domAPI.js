@@ -99,7 +99,7 @@ export const updateTodoUI = function(todoId, todoData){
     console.log(todoEl);
     
     todoEl.getElementsByClassName("todo-title")[0].textContent = todoData.title 
-    + " ("+(todoData.completed ? "complete" : "incomplete")+")";
+    + " "+(todoData.completed ? "\u{2714}" : "\u{274C}");
     todoEl.getElementsByClassName("todo-description")[0].textContent = todoData.description;
     todoEl.getElementsByClassName("due-date")[0].textContent = "Due data: "+todoData.dueDate;
     todoEl.getElementsByClassName("priority")[0].textContent = "Priority: "+todoData.priority;

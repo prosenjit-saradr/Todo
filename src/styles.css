@@ -38,6 +38,7 @@ body > * {
     padding: 5px;
     margin: 5px;
     border-radius: 10px;
+    box-shadow: 4px 4px 4px grey;
 }
 
 #side-bar {
@@ -276,14 +277,10 @@ img {
 ul {
     list-style: none;
 }
+
 .active {
     background: skyblue;
     box-shadow: 2px 2px 4px grey;
-}
-
-#container {
-    display: flex;
-    flex-direction: row;
 }
 
 .project-list {
@@ -301,4 +298,68 @@ ul {
 #todo-dialog fieldset {
     display: flex;
     flex-direction: column;
+}
+
+dialog[open] {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  border-radius: 5px;
+}
+
+dialog[open] input[type="text"], textarea {
+    border: 1px solid skyblue;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+dialog[open] input[type="text"]:hover, textarea:hover{
+    border: 1px solid rgb(41, 181, 237);
+}
+
+dialog[open] label {
+    margin: 5px;
+}
+
+dialog[open] button {
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+}
+
+dialog[open] button:hover {
+    box-shadow: 2px 2px 2px grey;
+}
+
+dialog[open] button[id *="discard"] {
+    background-color: rgb(239, 91, 91);
+}
+
+dialog[open] button[id *="close"] {
+    background-color: rgb(239, 91, 91);
+}
+
+dialog[open] button[id *="create"] {
+    background-color: rgb(64, 245, 64);
+}
+
+dialog[open] button[id *="update-todo"] {
+    background-color: rgb(64, 245, 64);
+}
+
+dialog[open] input[type="date"], 
+input[type="radio"],
+input[type="checkbox"] {
+    margin: 5px;
+}
+
+dialog[open] input[type="date"]:hover, 
+input[type="radio"]:hover,
+input[type="checkbox"]:hover,
+input[type="date"] {
+    cursor: pointer;
 }

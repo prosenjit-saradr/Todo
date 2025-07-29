@@ -20,13 +20,17 @@ export const initUI = function(){
     projectContainer.appendChild(projectList);
 
     let todoList = null;
-    if(Storage().isEmpty()){
-        todoList = TodoListUI([]);
-    }
-    else{
-        todoList = TodoListUI(projects[0].todo);
-        setActiveProjectId(projects[0].id);
-    }
+    // if(Storage().isEmpty()){
+    //     todoList = TodoListUI();
+    // }
+    // else{
+    //     todoList = TodoListUI(projects[0].todo);
+    //     setActiveProjectId(projects[0].id);
+    // }
+
+    todoList = TodoListUI(projects[0].todo);
+    setActiveProjectId(projects[0].id);
+
     const todoContainer = document.getElementById("todo-container");
     todoContainer.appendChild(todoList);
 
@@ -221,6 +225,6 @@ export const DeleteProjectHandler = function(evt){
     if(projectElement.id === getActiveProjectId()){
         if(!Storage().isEmpty()){
             setActiveProjectId(Storage().getProjects()[0].id);
-        }
+        }else setActiveProjectId(null);
     }
 }

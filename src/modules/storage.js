@@ -49,7 +49,7 @@ export const Storage = function(){
             */
 
             const data = JSON.parse(localStorage.getItem("projects"));
-            if(data==null){
+            if(data==null || data.length==0){
                 this.saveProjects(defaultProjectList);
                 cachedProjects.setProjects(defaultProject);
                 return defaultProjectList;

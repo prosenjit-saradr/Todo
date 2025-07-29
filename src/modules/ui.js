@@ -80,7 +80,6 @@ export const TodoCreateDialog = function(){
     const html = `
         <div>
             <fieldset>
-            <legend>Todo details</legend>
 
                 <Label for="title">Title<span class="required">*</span></Label>
                 <input id="titile" type="text" required placeholder="todo title">
@@ -125,8 +124,6 @@ export const TodoEditDialog = function(todoData){
     const html = `
         <div>
             <fieldset>
-            <legend>Todo details</legend>
-
                 <Label for="title">Title<span class="required">*</span></Label>
                 <input id="titile" type="text" required placeholder="todo title" value="${todoData.title}">
 
